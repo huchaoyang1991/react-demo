@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CmtName from './CmtName';
 import './style.css';
 class Demo extends Component {
     constructor() {
@@ -12,14 +13,13 @@ class Demo extends Component {
             ]
         }
     }
-    render() {        return (
+
+    render() {
+        return (
             <div className="aaa">
-               
+
                 <h1 className="title">这是评论列表组件</h1>
-                {this.state.CommentList.map(item => <div key={item.id}>
-                    <h1 >评论人-{item.user}</h1>
-                    <p >评论内容-{item.content}</p>
-                </div>)}
+                {this.state.CommentList.map(item => <CmtName {...item} key={item.id} />)}
             </div>
         )
     }
