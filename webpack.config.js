@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')//导入在内存中自�
 
 //创建一个插件的实例对象
 const htmlPlugin = new HtmlWebpackPlugin({
-    template: path.join(__dirname, './src/index.html'),//源文件
+    template: path.join(__dirname, './src/index.js'),//源文件
     filename: 'index.html' //生成的内存中首页的名称
 })
 //向外暴露一个打包的配置对象；因为webpack是基于node构建的；所以webpack支持所有Node API和语法
@@ -14,12 +14,17 @@ module.exports = {
         htmlPlugin
     ],
     module: {//所有第三方规则匹配
-        rules: [{
-            test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/
-        },
-        {
-            test: /\.css$/i, use: ['style-loader', 'css-loader']
-        }
+        rules: [
+            {
+                test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/
+            },
+            {
+                // test: /\.css$/, use: ['style-loader', 'css-loader?modules&localIdentName=[path]']
+                test: /\.css$/, use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.jpg|png|gif|bmpttf|woff|woff2|eot|svg$/, use: 'url-loader'//打包处理字体文件的loader
+            }
         ]
     },
     resolve: {
