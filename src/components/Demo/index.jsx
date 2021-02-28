@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import BindEvent from '../BindEvent';
 import CmtName from '../CmnName';
 import './style.css';
 
@@ -22,11 +23,12 @@ class Demo extends Component {
             <div className="abc">
 
                 <h1 className="title">这是评论列表组件</h1>
-                <button className="btn-primary">按钮</button>
+                <BindEvent></BindEvent>
                 {this.state.CommentList.map(item => <CmtName {...item} key={item.id}/>)}
             </div>
         )
     }
+  
 }
 
 export default Demo;
